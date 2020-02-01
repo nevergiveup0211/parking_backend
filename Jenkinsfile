@@ -8,7 +8,8 @@ pipeline {
 	}
 		stage('Mvn Package') {
          steps {
-		sh label: '', script: 'mvn clean package deploy'
+		def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
+    sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
 	 }
 		}
 	
